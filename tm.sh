@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 function install_vnstat {
     vnstat=$(which vnstat)
@@ -51,11 +51,12 @@ function set_check_period {
 function create_check_trafic {
 (
 cat <<EOF
-#!/usr/bin/bash
+#!/bin/bash
 
 traffic_limit=$traffic_limit
 current_traffic=\$(vnstat -i $network_interface --oneline | cut -d ';' -f 11)
 current_date=\$(date +"%Y-%m-%d %R")
+echo "\$current_date: \$current_traffic"
 echo "\$current_date: \$current_traffic" >> /var/log/network_traffic.log
 
 if [[ "\$current_traffic" == *GiB* ]]; then
