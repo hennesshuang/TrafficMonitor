@@ -7,6 +7,7 @@ function install_vnstat {
         return
     fi
     
+    apt -y --fix-broken install
     apt-get install vnstat
     if [ $? -eq 0 ]; then
         echo "Successfully installed vnstat"
