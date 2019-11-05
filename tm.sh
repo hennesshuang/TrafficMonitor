@@ -87,6 +87,7 @@ echo
 echo Step 2. Select Network Interface
 select_network_inetrface
 vnstat -u -i $network_interface
+chown -R vnstat:vnstat /var/lib/vnstat
 current_traffic=$(vnstat -i $network_interface --oneline | cut -d ';' -f 11)
 echo network traffic total for current month: $current_traffic
 echo
